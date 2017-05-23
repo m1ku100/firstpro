@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appadmin')
 
 @section('content')
 
@@ -13,9 +13,9 @@
             <div class="login">
                 <div class="login-screen">
                     <div class="app-title">
-                        <h1>Login</h1>
+                        <h1>Admin Login</h1>
                     </div>
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.login') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -59,20 +59,10 @@
                                 <button type="submit" class="btn btn-primary" style="font-family: 'Century Gothic'">
                                     Login
                                 </button>
-<center><p>Don't Have Account ?<a  href="{{ url('/register') }}">
-        Click Here!
-    </a></p></center>
-
-
                             </div>
                         </div>
-
-
-
-
                     </form>
                 </div>
-
         </div>
     </div>
 </div>

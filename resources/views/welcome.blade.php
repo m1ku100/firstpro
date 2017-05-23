@@ -10,13 +10,13 @@
     <!-- Fonts -->
 
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    <link rel="icon" href="{{ asset('img/iconFD.png') }}">
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
     <!-- Styles -->
     <style>
         html, body {
-            background-color: white;
+            background-color: #CFCFCF;
             color: white;
             font-family: 'Raleway', sans-serif;
             font-weight: 100;
@@ -48,6 +48,44 @@
             background-image: url("{{ asset('img/') }}");
             background-size: cover;;
 
+        }
+        #about {
+            background-color: white;
+            color: Black;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 100;
+            height:;
+            margin: 0;
+            background-image: url("{{ asset('img/') }}");
+            background-size: cover;;
+
+        }
+        .content {
+            min-height: calc(100vh - 70px);
+            padding: 40px 40px 0 40px;
+        }
+        .footer {
+            height: 50px;
+        }
+
+
+
+        #footer {
+            position: fixed;
+            bottom: 0px;
+            margin:0 auto;
+            height: 50px;
+            width:100%;
+            background-image: linear-gradient(135deg, transparent 50%, #6AC5F6 50%), linear-gradient(45deg, #93D1F3 50%, transparent 50%);
+            background-size: 50px 50px;
+            z-index:3;
+        }
+
+        footer {
+            background: #42A5F5;
+            color: white;
+            line-height: 50px;
+            padding: 0 20px;
         }
 
         .full-height {
@@ -149,16 +187,7 @@
 </head>
 <body>
 <div class="flex-center position-ref full-height " id="fluidblue">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @if (Auth::check())
-                <a href="{{ url('/home') }}" class="" style="font-family: 'Century Gothic';color: white;">Home</a>
-            @else
-                <a href="{{ url('auth/login') }}" style="font-family: 'Century Gothic';color: white;">Login</a>
-                <a href="{{ url('/register') }}" style="font-family: 'Century Gothic';color: white;">Register</a>
-            @endif
-        </div>
-    @endif
+
 
     <div class="">
         <div class="title m-b-md " style="font-family: 'Lobster 1.4'">
@@ -167,7 +196,7 @@
 
         <center>
             <div class="link">
-                <a href="" class="btn color-2 " style="font-size: 14pt"><b> Cari Basecamp mu Disini !!</b></a>
+                <a href="{{ url('/login') }}" class="btn color-2 " style="font-size: 14pt"><b> Cari Basecamp mu Disini !!</b></a>
             </div>
         </center>
     </div>
@@ -228,15 +257,20 @@
     </div>
   </div>
 
-<div class="" id="fluid">
+<div class="" id="fluid" >
     <div class="container">
         <div class="row">
             <center>
-                <h2 style="font-family: 'Century Gothic';color: #3498DB;;"><b>Rekomendasi Penginapan</b></h2>
+                <h2 style="font-family: 'Century Gothic';color: #3498DB;;"><b>Tentang Kami</b></h2>
             </center>
+            <div id="about">
+                <p></p>
+            </div>
         </div>
     </div>
 </div>
+
+<footer class="footer"></footer>
 
 </body>
 </html>

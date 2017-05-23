@@ -20,21 +20,9 @@
         ]) !!};
     </script>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        *:focus {
-            outline: none;
-        }
-        #body {
-            font-family: Arial;
-            background-color: #3498DB;
-            padding: 50px;
-        }
         .login {
-            margin: 20px auto;
-            width: 300px;
+            margin: 100px auto;
+            width: 500px;
         }
         .login-screen {
             background-color: #FFF;
@@ -48,14 +36,14 @@
         }
 
         .login-form {
-            text-align: center;
+            text-align: left;
         }
         .control-group {
             margin-bottom: 10px;
         }
 
         input {
-            text-align: center;
+            text-align: left;
             background-color: #ECF0F1;
             border: 2px solid transparent;
             border-radius: 3px;
@@ -131,7 +119,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
