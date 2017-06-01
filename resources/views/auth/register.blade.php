@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('judul','Register | Bibis-Room')
 @section('content')
 <div class="container">
     <div class="row">

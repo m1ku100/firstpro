@@ -61,11 +61,11 @@ class LoginController extends Controller
         // if unsuccessful, then redirect back to the login with the form data
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
-    public function logout(Request $request)
+    public function logout()
     {
         $this->guard('admin')->logout();
-        $request->session()->flush();
-        $request->session()->regenerate();
+//        $request->session()->flush();
+//        $request->session()->regenerate();
         return redirect('/');
     }
 

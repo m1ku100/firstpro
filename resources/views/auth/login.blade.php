@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('judul','Login | Bibis-Room')
 @section('content')
 
     <style>

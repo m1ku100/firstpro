@@ -4,66 +4,115 @@
 
 
 
-<div class="slider-area">
-    <div class="slider">
-        <div id="bg-slider" class="owl-carousel owl-theme">
-
-            <div class="item"><img src="/users/img/BG.jpg" alt="Mirror Edge"></div>
-            <div class="item"><img src="/users/img/gray.jpg" alt="The Last of us"></div>
-        </div>
-    </div>
-    <div class="container slider-content">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-                <h2>Mencari Penginapan Sekarang Lebih Mudah</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi deserunt deleniti, ullam commodi sit ipsam laboriosam velit adipisci quibusdam aliquam teneturo!</p>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="content-area">
+
     <div class="container">
-        <div class="row page-title text-center wow zoomInDown" data-wow-delay="1s">
-            <h5>Our Process</h5>
-            <h2>How we work for you?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae illum dolorem, rem officia, id explicabo sapiente</p>
+        <div class="col-md-12">
+            <div id="map" style="position: relative; overflow: hidden"></div>
+            <script>
+                var customIcons = {
+                    /*nasi: {
+                     icon: 'http://www.google.com/mapfiles/markerN.png',
+                     shadow: 'http://www.google.com/mapfiles/shadow50.png'
+                     },
+                     steak: {
+                     icon: 'http://www.google.com/mapfiles/markerS.png',
+                     shadow: 'http://www.google.com/mapfiles/shadow50.png'
+                     },
+                     sate: {
+                     icon: 'http://www.google.com/mapfiles/markerA.png',
+                     shadow: 'http://www.google.com/mapfiles/shadow50.png'
+                     },
+                     mie: {
+                     icon: 'http://www.google.com/mapfiles/markerM.png',
+                     shadow: 'http://www.google.com/mapfiles/shadow50.png'
+                     },
+                     seafood: {
+                     icon: 'http://www.google.com/mapfiles/markerK.png',
+                     shadow: 'http://www.google.com/mapfiles/shadow50.png'
+                     },*/
+                };
+
+                function initMap() {
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        center: new google.maps.LatLng(-7.3820311,106.8073609),
+                        zoom: 12
+                    });
+                    var infoWindow = new google.maps.InfoWindow;
+                    var dest;
+                    var autocomplete = new google.maps.places.Autocomplete((document.getElementById('dest')),
+                            { types: ['geocode'] });
+
+                    // Change this depending on the name of your PHP or XML file
+                    downloadUrl('conn_xml.php', function(data) {
+                        var xml = data.responseXML;
+                        var markers = xml.documentElement.getElementsByTagName('marker');
+                        Array.prototype.forEach.call(markers, function(markerElem) {
+                            var name = markerElem.getAttribute('name');
+                            var address = markerElem.getAttribute('address');
+                            var type = markerElem.getAttribute('type');
+                            var rating = markerElem.getAttribute('rating')
+                            var point = new google.maps.LatLng(
+                                    parseFloat(markerElem.getAttribute('lat')),
+                                    parseFloat(markerElem.getAttribute('lng')));
+
+                            var infowincontent = document.createElement('div');
+                            var strong = document.createElement('strong');
+                            strong.textContent = name
+                            infowincontent.appendChild(strong);
+                            infowincontent.appendChild(document.createElement('br'));
+
+                            var text = document.createElement('text');
+                            text.textContent = address
+                            infowincontent.appendChild(text);
+                            infowincontent.appendChild(document.createElement('br'));
+
+                            var txtrating = document.createElement('txtrating');
+                            txtrating.textContent = 'Rating: ' + rating
+
+                            // infowincontent.appendChild(txtrating);
+                            var icon = customIcons[type] || {};
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                position: point,
+                                icon: 'houseicon.ico',
+                                shadow: icon.shadow
+                            });
+                            marker.addListener('click', function() {
+                                infoWindow.setContent(infowincontent);
+                                infoWindow.open(map, marker);
+                            });
+                        });
+                    });
+
+                }
+
+                function downloadUrl(url, callback) {
+                    var request = window.ActiveXObject ?
+                            new ActiveXObject('Microsoft.XMLHTTP') :
+                            new XMLHttpRequest;
+
+                    request.onreadystatechange = function() {
+                        if (request.readyState == 4) {
+                            request.onreadystatechange = doNothing;
+                            callback(request, request.status);
+                        }
+                    };
+
+                    request.open('GET', url, true);
+                    request.send(null);
+                }
+
+                function doNothing() {}
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjeAFQrj1wF_2L6uwNjuh6Nat6gYE7Gxw&v=3.exp&sensor=false&libraries=places&language=id&callback=initMap"
+                    async defer></script>
+
         </div>
-        <div class="row how-it-work text-center">
-            <a href="{{route('Jakarta')}}">
-            <div class="col-md-4">
-                <div class="single-work wow fadeInUp" data-wow-delay="0.8s">
-                    <img src="{{ asset('img/jakartabiru.png') }}"  alt="">
-                    <h3>Penginapan Sekitar Jakarta</h3>
-                    <p>Using the outcomes from the job, we will put together a plan for the most effective marketing strategy to get the best results.</p>
-                </div>
-            </div>
-            </a>
-            <a href="{{route('Jogja')}}">
-            <div class="col-md-4">
-                <div class="single-work  wow fadeInUp"  data-wow-delay="0.9s">
-                    <img src="{{ asset('img/jogjabiru.png') }}" alt="">
-                    <h3>Penginapan Sekitar Yogyakarta</h3>
-                    <p>Using the outcomes from the job, we will put together a plan for the most effective marketing strategy to get the best results.</p>
-                </div>
-            </div>
-            </a>
-            <a href="{{route('Surabaya')}}">
-            <div class="col-md-4">
-                <div class="single-work wow fadeInUp"  data-wow-delay="1s">
-                    <img src="{{ asset('img/Surabayabiru.png') }}" alt="">
-                    <h3>Penginapan Sekitar Surabaya</h3>
-                    <p>Using the outcomes from the job, we will put together a plan for the most effective marketing strategy to get the best results.</p>
-                </div>
-            </div>
-            </a>
-        </div>
+
     </div>
     <hr>
-
-
-
 
     <div class="container">
         <div class="row page-title text-center wow bounce"  data-wow-delay="1s">
@@ -211,6 +260,8 @@
     </div>
 
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjeAFQrj1wF_2L6uwNjuh6Nat6gYE7Gxw&v=3.exp&sensor=false&libraries=places&language=id&callback=initMap"
+        async defer></script>
 
 @endsection
 

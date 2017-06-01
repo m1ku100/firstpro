@@ -12,8 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('users.home');
 });
+
+
 
 Auth::routes();
 
@@ -26,4 +28,20 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', 'AdminController@index')->name('admin.dashboard');
 });
 
-Route::get('/auth/login', 'HomeController@index');
+
+Route::prefix('/')->group(function () {
+    Route::get('/', 'RoomController@index')->name('Home');
+    Route::get('home', 'HomeController@index')->name('Login');
+    Route::get('Kosan', 'RoomController@kosan')->name('Kosan');
+    Route::get('About', 'RoomController@about')->name('About');
+    Route::get('Jakarta', 'RoomController@showjakarta')->name('Jakarta');
+    Route::get('Surabaya', 'RoomController@showsurabaya')->name('Surabaya');
+    Route::get('Yogyakarta', 'RoomController@showyogyakarta')->name('Jogja');
+    Route::get('Profile/{user}/edit', 'RoomController@showEditForm');
+    Route::put('Profile/{user}/update', 'RoomController@update');
+
+   
+
+});
+
+

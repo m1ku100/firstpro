@@ -196,7 +196,7 @@
 
         <center>
             <div class="link">
-                <a href="{{ url('/login') }}" class="btn color-2 " style="font-size: 14pt"><b> Cari Basecamp mu Disini !!</b></a>
+                <a href="{{route('Home')}}" class="btn color-2 " style="font-size: 14pt"><b> Cari Basecamp mu Disini !!</b></a>
             </div>
         </center>
     </div>
