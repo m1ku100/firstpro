@@ -1,5 +1,5 @@
 @extends('layouts.bibis')
-@section('judul','Home | Bibis-Room')
+@section('judul','Kos Yogyakarta | Bibis-Room')
 @section('content')
 
 
@@ -111,6 +111,38 @@
 
         </div>
 
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row page-title text-center wow zoomInDown" data-wow-delay="1s">
+            <h5>Kos Daerah Yogyakarta</h5>
+            <h2>How we work for you?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae illum dolorem, rem officia, id explicabo sapiente</p>
+        </div>
+        <div class="row how-it-work text-center">
+            @foreach($jogja as $row)
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <img src="/img/{{$row->foto_kos_depan}}" alt=""
+                             style="width: 300px; height: 200px">
+                        <div class="caption">
+                            <h4 style="color: dodgerblue; font-family: 'Century Gothic'">
+                                <strong>{{$row->nama_kos}}</strong></h4>
+                            <p>Rp.{{$row->harga_per_bulan}}/<b>per Bulan</b></p>
+                            <p style="font-family: 'Century Gothic'">{{$row->alamat}}</p>
+                            <p class="" style="font-family: 'Century Gothic'">
+                                <a href="{{url('Kosan/'.$row->id.'/detail')}}">
+                                                <span style="color: dodgerblue">Lihat lebih lanjut <i
+                                                            class="fa fa-chevron-right"></i></span></a>
+                            </p>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            @endforeach
+        </div>
     </div>
     <hr>
 

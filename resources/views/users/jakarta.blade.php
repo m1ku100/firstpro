@@ -1,5 +1,5 @@
 @extends('layouts.bibis')
-@section('judul','Kos Surabaya | Bibis-Room')
+@section('judul','Kos Jakarta | Bibis-Room')
 @section('content')
 
 
@@ -36,7 +36,7 @@
 
                 function initMap() {
                     var map = new google.maps.Map(document.getElementById('map'), {
-                        center: new google.maps.LatLng(-7.287216,112.737774),
+                        center: new google.maps.LatLng(-6.2276786,106.8073609),
                         zoom: 12
                     });
                     var infoWindow = new google.maps.InfoWindow;
@@ -115,12 +115,12 @@
     <hr>
     <div class="container">
         <div class="row page-title text-center wow zoomInDown" data-wow-delay="1s">
-            <h5>Kos Daerah Surabaya</h5>
+            <h5>Kos Daerah Jakarta</h5>
             <h2>How we work for you?</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae illum dolorem, rem officia, id explicabo sapiente</p>
         </div>
         <div class="row how-it-work text-center">
-            @foreach($surabaya as $row)
+            @foreach($jakarta as $row)
                 <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
                         <img src="/img/{{$row->foto_kos_depan}}" alt=""
